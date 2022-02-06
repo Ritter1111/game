@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    background:linear-gradient(rgba(0, 0, 0, 0.4), transparent 3px ),
+    linear-gradient(90deg, rgba(0,0,0,0.4), transparent 3px) ;
+    background-size: 30px 30px;
+}
