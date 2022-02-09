@@ -22,9 +22,13 @@ stroke-linecap="round" />
 
 function stepCross(target){
 target.innerHTML=cross;
+let crossAudio = new Audio('audio/cross.mp3');
+crossAudio.play();
 }
 function stepZero(target){
     target.innerHTML=circle;
+    let zeroAudio = new Audio('audio/zero.mp3');
+zeroAudio.play();
 }
 function init(e){
 if(!step) stepCross(e.target);
