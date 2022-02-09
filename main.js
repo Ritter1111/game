@@ -7,13 +7,13 @@ btnGame = document.querySelector('.new-game'),
 fields = document.querySelector('.field'),
 step = false,
 circle= `<svg class="circle">
-<circle class="ci" r="45" cx="58" cy="58" stroke="blue"
+<circle class="ci" r="45" cx="58" cy="58" stroke="pink"
 stroke-width="10" fill="none" 
 stroke-linecap="round" />
 </svg> `,
 cross=`<svg class="cross">
 <line class="first" x1="15" y1="15" x2="100" y2="100" 
-stroke="red" stroke-width="10"
+stroke="yellow" stroke-width="10"
 stroke-linecap="round" />
 <line class="second" x1="100" y1="15" x2="15" y2="100" 
 stroke="red" stroke-width="10"
