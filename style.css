@@ -45,12 +45,12 @@ body {
 .active{
     background: rgba(0, 255,0,0.5);
 }
-.ci{
+.circle{
     width: 100%;
     height: 100%;
     
 }
-.circle{
+.ci{
     stroke-dasharray:283;
     stroke-dashoffset: 283;
     animation:draw 1s forwards;
