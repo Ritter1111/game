@@ -1,10 +1,11 @@
     // let c= document.querySelector('first');
     // console.log(c.getTotalLength());
     let game = document.querySelector('.game'),
-      res= document.querySelector('.res'),
-         btnGame = document.querySelector('.new-game'),
-            fields = document.querySelectorAll('.field'),
-                step = false,
+    res= document.querySelector('.res'),
+    btnGame = document.querySelector('.new-game'),
+    fields = document.querySelectorAll('.field'),
+    step = false,
+    count = 0;
     circle =  `<svg class="circle">
     <circle class="ci" r="45" cx="58" cy="58" stroke="pink"
     stroke-width="10" fill="none" stroke-linecap="round" />
@@ -20,16 +21,18 @@
 
     function stepCross(target) {
         target.innerHTML=cross;
-            target.classList.add('x');
-                let crossAudio = new Audio('audio/cross.mp3');
-                    crossAudio.play();
+        target.classList.add('x');
+        let crossAudio = new Audio('audio/cross.mp3');
+        crossAudio.play();
+        count++;
     }
 
     function stepZero(target) {
         target.innerHTML=circle;
-                target.classList.add('o');
-                    let zeroAudio = new Audio('audio/zero.mp3');
-                        zeroAudio.play();
+        target.classList.add('o');
+        let zeroAudio = new Audio('audio/zero.mp3');
+         zeroAudio.play();
+         count++;
     }
 
     function init(e) {
@@ -40,7 +43,14 @@
     }
 
     function newGame() {
-
+        step = false;
+        count = 0;
+        res.innerText = '';
+        fields.forEach(item => {
+            item.innerHTML = '';
+            item.classList.remove('x', 'o', 'active');
+        });
+        game.addEventListener('click', init);
     }
 
     function win () {
@@ -55,18 +65,36 @@
     [2,4,6]
     ];
 
-    for(let i=0; i<comb.length; i++) {
+    for (let i=0; i<comb.length; i++) {
 
-        if(fields[comb[i][0]].classList.contains('x') &&
+     if (fields[comb[i][0]].classList.contains('x') &&
         fields[comb[i][1]].classList.contains('x') &&
         fields[comb[i][2]].classList.contains('x')) {
-    setTimeout(() => {
+        setTimeout(() => {
         fields[comb[i][0]].classList.add('active');
         fields[comb[i][1]].classList.add('active');
         fields[comb[i][2]].classList.add('active');
-        res.innerText = 'Виграли х';
-    },1500);
-             }
+          res.innerText = 'Виграли х';
+       },1500);
+        game.removeEventListener('click', init);
+     }
+
+     else if (fields[comb[i][0]].classList.contains('o') &&
+        fields[comb[i][1]].classList.contains('o') &&
+        fields[comb[i][2]].classList.contains('o')) {
+        setTimeout(() => {
+        fields[comb[i][0]].classList.add('active');
+        fields[comb[i][1]].classList.add('active');
+        fields[comb[i][2]].classList.add('active');
+          res.innerText = 'Виграли O';
+       },1500);
+        game.removeEventListener('click', init);
+             }   
+             
+     else if(count == 9) {
+         res.innerText = 'Нічия';
+         game.removeEventListener('click', init);
+     }        
          }
     }
     btnGame.addEventListener('click', newGame);
